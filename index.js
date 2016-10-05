@@ -62,7 +62,16 @@ class AutoComplete extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (!nextProps.defaultValue || nextProps.defaultValue === this.props.defaultValue) {
+      this._showResults(false);
+      return
+    }
     const dataSource = this.state.dataSource.cloneWithRows(nextProps.data);
+
+    if (dataSource[0] && dataSource[0] === nextProps.defaultValue) {
+      this._showResults(false);
+      return
+    }
     this._showResults(dataSource.getRowCount() > 0);
     this.setState({ dataSource });
   }
