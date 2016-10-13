@@ -41,11 +41,11 @@ class AutoComplete extends Component {
      * `onShowResults` will be called when list is going to
      * show/hide results.
      */
-     onShowResults: PropTypes.func
+     onShowResults: PropTypes.func,
 
-     placeholder: PropTypes.string
+     placeholder: PropTypes.string,
 
-     autoCorrect: PropTypes.bool
+     autoCorrect: PropTypes.bool,
   };
 
   static defaultProps = {
