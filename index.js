@@ -125,15 +125,15 @@ class AutoComplete extends Component {
 
   render() {
     const { showResults } = this.state;
-    const { containerStyle, inputContainerStyle, onEndEditing, style, ...props, placeholder, autoCorrect } = this.props;
+    const { containerStyle, inputContainerStyle, placeholder, autoCorrect  onEndEditing, style, ...props} = this.props;
     return (
       <View style={[styles.container, containerStyle]}>
         <View style={[styles.inputContainer, inputContainerStyle]}>
           <TextInput
             style={[styles.input, style]}
             ref="textInput"
-            placeholder=placeholder
-            autoCorrect=autoCorrect
+            placeholder={placeholder}
+            autoCorrect={autoCorrect}
             onEndEditing={e =>
               this._showResults(false) || (onEndEditing && onEndEditing(e))
             }
