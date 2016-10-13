@@ -76,10 +76,20 @@ class AutoComplete extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (!nextProps.defaultValue || nextProps.defaultValue === this.props.defaultValue) {
+        this._showResults(false);
+        return
+    }
     const dataSource = this.state.dataSource.cloneWithRows(nextProps.data);
-    this._showResults(dataSource.getRowCount() > 0);
-    this.setState({dataSource});
-  }
+
+   if (dataSource[0] && dataSource[0] === nextProps.defaultValue) {
+     this._showResults(false);
+     return
+   }
+   this._showResults(dataSource.getRowCount() > 0);
+   this.setState({ dataSource });
+
+ }
 
   _renderItems() {
     const { listStyle, renderItem } = this.props;
